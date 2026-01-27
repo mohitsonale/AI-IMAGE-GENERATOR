@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Bycredit from "./pages/Bycredit";
 import Results from "./pages/Results";
 import Navbar from "./component/Navbar";
+import Footer from "./component/Footer";
 
 function App(){
 
@@ -17,6 +18,7 @@ function App(){
         <Route path="/results" element={<Results />} />
 
       </Routes>
+      <Footer />
     </div>
   )
 }

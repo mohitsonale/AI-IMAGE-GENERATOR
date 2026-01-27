@@ -15,7 +15,7 @@ function Header(){
 
             <p className="text-center max-w-xl mx-auto mt-5">Unleash your creativity with AI. Turn your imagination into visual art in second - just type, and watch the magic happen.</p>
 
-            <button className="sm:text-lg text-white bg-black w-auto mt-8 px-12 py-2.5 flex items-center gap-2 rounded-full">Generate image <img src={assets.star_group} alt="" className="h-6" /></button>
+            <button className="sm:text-lg text-white bg-black w-auto mt-8 px-12 py-2.5 flex items-center gap-2 rounded-full cursor-pointer hover:scale-105 duration-500 transition-all">Generate image <img src={assets.star_group} alt="" className="h-6" /></button>
 
             <div className="flex flex-wrap justify-center mt-16 gap-3">
                 {
