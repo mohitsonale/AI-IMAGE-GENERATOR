@@ -1,9 +1,12 @@
+import { useContext } from "react";
 import { plans } from "../assets/assets";
+import  { Usercontext } from "../context/Appcontext";
 
 
 
 function Bycredit(){
 
+    const {user}=useContext(Usercontext)
     return(
         <div className="min-h-[80vh]  text-center pt-14 mb-10  ">
             <button className="border border-gray-400 px-10 py-2 rounded-full mb-6 hover:scale-105 transition-all duration-400 drop-shadow-md bg-white/20">Our Plans</button>
@@ -19,7 +22,7 @@ function Bycredit(){
                         <h2 className="text-md mt-3 text-lg font-medium ">{item.id}</h2>
                         <p className="text-sm text-gray-400 ">{item.desc}</p>
                         <p className="mt-7 text-3xl font-bold">${item.price}  <span className="text-sm text-gray-400 font-light">/{  item.credits}credits </span> </p>
-                        <button className="bg-black text-white w-full min-w-52  px-6 py-2 rounded-lg mt-14 ">Get Started</button>
+                        <button className="bg-black text-white w-full min-w-52  px-6 py-2 rounded-lg mt-14 ">{user ? "Purchase" : "Get Started"}</button>
 
                         
 
