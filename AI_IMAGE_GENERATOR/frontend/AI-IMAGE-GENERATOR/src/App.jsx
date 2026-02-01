@@ -5,14 +5,21 @@ import Results from "./pages/Results";
 import Navbar from "./component/Navbar";
 import Footer from "./component/Footer";
 import Login from "./component/Login";
+import { useContext } from "react";
+import { Usercontext } from "./context/Appcontext";
 
 function App(){
+
+  const{showlogin}=useContext(Usercontext)
 
   return(
     <div className="px-4 sm:px-10 md:px-14 lg:px-28 min-h-screen bg-gradient-to-b from-teal-50 to-orange-50">
       
       <Navbar />
-      <Login />
+      {
+        showlogin && <Login />
+      }
+     
       <Routes>
 
         <Route path="/" element={<Home />} />

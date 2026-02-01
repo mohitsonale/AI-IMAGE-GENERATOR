@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import {assets} from '../assets/assets';
+import {motion} from 'framer-motion';
 
 function Results(){
 
@@ -13,7 +14,14 @@ function Results(){
     }
 
     return(
-        <form onSubmit={Submithandler} className='flex flex-col justify-center items-center min-h-[90vh]'>
+        <motion.form onSubmit={Submithandler} className='flex flex-col justify-center items-center min-h-[90vh]'
+
+         initial={{ opacity: 0.2, y: 100 }}
+        transition={{ duration: 1 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={true}
+        
+        >
             <div>
                 <div className='relative'>
                     <img src={image} alt="Generated image" className='max-w-sm rounded' />
@@ -35,7 +43,7 @@ function Results(){
             </div>}
 
            
-        </form>
+        </motion.form>
     )   
 }
 

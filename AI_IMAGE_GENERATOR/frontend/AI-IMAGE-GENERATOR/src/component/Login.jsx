@@ -1,16 +1,35 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { assets } from "../assets/assets";
+import { Usercontext } from "../context/Appcontext";
+import{motion} from "framer-motion"
 
 
 function Login(){
 
     const[state,Setstate]=useState("Sign up")
 
+    const {Setshowlogin}=useContext(Usercontext)
+
+    useEffect(()=>{
+        document.body.style.overflow="hidden";
+
+        return()=>{
+            document.body.style.overflow="unset";
+        }
+    })
+
 
     return(
-        <div className="absolute left-0 right-0 bottom-0 top-0 z-10 backdrop-blur-sm bg-black/30 flex justify-center items-center">
+        <div className="fixed left-0 right-0 bottom-0 top-0 z-10 backdrop-blur-sm bg-black/30 flex justify-center items-center">
 
-            <form className="relative bg-white p-10 rounded-xl text-black" >
+            <motion.form className="relative bg-white p-10 rounded-xl text-black"
+
+            initial={{ opacity: 0.2, y: 70 }}
+            transition={{ duration: 0.8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={true}
+            
+            >
                 {state==="Sign up" ?  <h1 className="text-center text-2xl text-neutral-700 font-medium"> Sign up</h1>
                 : 
                  <h1 className="text-center text-2xl text-neutral-700 font-medium"> Login</h1>
@@ -60,10 +79,10 @@ function Login(){
 
                 
 
-                <img src={assets.cross_icon} alt="" className="absolute top-5 right-5 cursor-pointer" />
+                <img onClick={()=>Setshowlogin(false)} src={assets.cross_icon} alt="" className="absolute top-5 right-5 hover:rotate-90 cursor-pointer transition-transform duration-300  " />
 
             
-            </form>
+            </motion.form>
 
         </div>
     )

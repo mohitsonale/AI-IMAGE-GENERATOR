@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { plans } from "../assets/assets";
 import  { Usercontext } from "../context/Appcontext";
+import {motion} from "framer-motion"
 
 
 
@@ -8,7 +9,14 @@ function Bycredit(){
 
     const {user}=useContext(Usercontext)
     return(
-        <div className="min-h-[80vh]  text-center pt-14 mb-10  ">
+        <motion.div className="min-h-[80vh]  text-center pt-14 mb-10"
+
+            initial={{ opacity: 0.2, y: 100 }}
+            transition={{ duration: 1 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={true}
+        
+        >
             <button className="border border-gray-400 px-10 py-2 rounded-full mb-6 hover:scale-105 transition-all duration-400 drop-shadow-md bg-white/20">Our Plans</button>
             <p className="text-center text-3xl font-medium mb-6 sm:mb-10">Choose the plans</p>
 
@@ -32,7 +40,7 @@ function Bycredit(){
             </div>
 
 
-        </div>
+        </motion.div>
     )
 }
 
