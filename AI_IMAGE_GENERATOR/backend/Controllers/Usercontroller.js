@@ -80,5 +80,26 @@ let login=async(req,res)=>{
         
     }
 }
-export {registeruser,login};
 
+let Usercredit=async(req,res)=>{
+
+    try {
+
+        let {userId}=req.body;
+
+        let user=await Usermodel.findById(userId)
+
+        res.json({success:true,credits:user.creditBalance,user:{name:user.name}})
+        
+    } catch (error) {
+
+        console.log(error)
+
+        res.json({success:false,message:"Unable to fetch user credits", error:error.message})
+        
+    }
+}
+
+export {registeruser,login,Usercredit};
+ 
+  
