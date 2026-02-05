@@ -7,6 +7,6 @@ let Userrouter=express.Router();
 
 Userrouter.post('/register',registeruser)
 Userrouter.post('/login',login)
-Userrouter.post('/credits',authMiddleware,Usercredit)
+Userrouter.get('/credits',authMiddleware,Usercredit)
 
 export default Userrouter;

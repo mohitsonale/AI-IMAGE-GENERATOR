@@ -7,17 +7,18 @@ const authMiddleware=async(req,res,next)=>{
     if(!token){
         return res.json({success:false,message:"No token provided"});
     }
-
+ 
     try {
 
         let tokendecode=jwt.verify(token,process.env.JWT_SECRET);
 
         if(tokendecode.id){
-            req.body.userId=tokendecode.id;
+            req.user = { id: tokendecode.id };
         }
         else{
             return res.json({success:false,message:"Invalid token"});
         }
+
 
         next();
         

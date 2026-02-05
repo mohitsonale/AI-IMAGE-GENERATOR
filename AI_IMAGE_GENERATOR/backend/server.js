@@ -9,7 +9,12 @@ import imageRouter from './routes/ImageRoutes.js';
 const PORT = process.env.PORT || 8080;
 
 const app=express();
-app.use(cors());
+app.use(cors({
+   
+   origin: "http://localhost:5173",
+  credentials: true,
+  allowedHeaders: ["Content-Type", "token"]
+}));
 app.use(express.json());
 await connectDB();
 
@@ -20,6 +25,7 @@ app.get('/',(req,res)=>{
 
 app.use('/api/user',Userrouter);
 app.use('/api/image',imageRouter);
+
 
 app.listen(PORT,()=>console.log(`Server is running on port ${PORT}`));
 

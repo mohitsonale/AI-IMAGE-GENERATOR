@@ -1,8 +1,10 @@
 import express from "express";
-import authMiddleware from "../Middlewares/auth.js";
 import imagegenerate from "../Controllers/Imagegenerate.js";
+import authMiddleware from "../Middlewares/auth.js";
 
 let imageRouter=express.Router();
+
+console.log("image router loaded");
 
 imageRouter.post('/generate-image',authMiddleware,imagegenerate)
 

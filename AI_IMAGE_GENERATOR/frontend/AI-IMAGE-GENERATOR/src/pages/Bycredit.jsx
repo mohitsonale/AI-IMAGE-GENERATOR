@@ -22,9 +22,9 @@ function Bycredit(){
 
             <div className="flex flex-wrap justify-center gap-6  text-left">
                 {plans.map((item,index)=>(
-                    <div className="bg-white/90 p-12 px-10 rounded-lg drop-shadow-sm  w-80 m-auto cursor-pointer hover:scale-[1.02] duration-400 transition-all"  >
+                    <div  key={index}  className="bg-white/90 p-12 px-10 rounded-lg drop-shadow-sm  w-80 m-auto cursor-pointer hover:scale-[1.02] duration-400 transition-all"  >
 
-                    <div key={index} className="flex flex-col">
+                    <div className="flex flex-col">
 
                         <img src={item.image} alt="" className="rounded-lg w-8" />
                         <h2 className="text-md mt-3 text-lg font-medium ">{item.id}</h2>

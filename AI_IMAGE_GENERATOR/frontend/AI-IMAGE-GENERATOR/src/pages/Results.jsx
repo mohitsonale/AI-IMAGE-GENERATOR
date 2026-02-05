@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import {assets} from '../assets/assets';
 import {motion} from 'framer-motion';
+import { Usercontext } from '../context/Appcontext';
 
 function Results(){
 
@@ -8,15 +9,34 @@ function Results(){
     const[isLoadded,SetisLoadded]=useState(false);
     const[loading,Setloading]=useState(false);
     const[input,Setinput]=useState("");
+
+    const {generateimages}=useContext(Usercontext)
     
     const Submithandler=async(e)=>{
+
+        e.preventDefault();
+        console.log("Submit clicked, prompt:", input);
+
+        Setloading(true)
+
+        if(input){
+            const img=await generateimages(input)
+            if(img){
+                SetisLoadded(true) 
+                Setimage(img)
+            }
+        }
+
+        Setloading(false)
+
+
 
     }
 
     return(
         <motion.form onSubmit={Submithandler} className='flex flex-col justify-center items-center min-h-[90vh]'
 
-         initial={{ opacity: 0.2, y: 100 }}
+        initial={{ opacity: 0.2, y: 100 }}
         transition={{ duration: 1 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={true}
@@ -31,7 +51,7 @@ function Results(){
             </div>
             { !isLoadded &&  <div className='flex  w-full max-w-xl bg-neutral-500 text-white rounded-full text-sm p-0.5 mt-10'>
                 <input onChange={(e)=>Setinput(e.target.value)} value={input} type="text" placeholder='Generate your image...' className='flex-1 bg-transparent outline-none ml-8 max-sm:w-20' />
-                <button onClick={()=>SetisLoadded(!isLoadded)}   type='submit' className='bg-zinc-900 px-10 sm:px-16 py-3 rounded-full cursor-pointer'>Generate</button>
+                <button type='submit' className='bg-zinc-900 px-10 sm:px-16 py-3 rounded-full cursor-pointer'>Generate</button>
             </div>
 
                

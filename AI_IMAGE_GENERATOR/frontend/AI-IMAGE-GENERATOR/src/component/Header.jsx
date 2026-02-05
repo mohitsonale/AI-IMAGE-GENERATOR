@@ -84,7 +84,7 @@ function Header() {
 
                         whileHover={{scale:1.05,duration:0.1}}
                         
-                        src={index % 2 == 0 ? assets.sample_img_2 : assets.sample_img_1} alt="" className="rounded hover:scale-105 duration-500 transition-all cursor-pointer max-sm:w-10 w-[70px]" />
+                        src={index % 2 == 0 ? assets.sample_img_2 : assets.sample_img_1} key={index} alt="" className="rounded hover:scale-105 duration-500 transition-all cursor-pointer max-sm:w-10 w-[70px]" />
                     ))
                 }
 

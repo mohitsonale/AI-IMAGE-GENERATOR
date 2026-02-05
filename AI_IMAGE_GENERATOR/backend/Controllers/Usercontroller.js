@@ -85,15 +85,16 @@ let Usercredit=async(req,res)=>{
 
     try {
 
-        let {userId}=req.body;
+        const userId = req.user.id;  
 
-        let user=await Usermodel.findById(userId)
+        let user=await Usermodel.findById(userId) 
 
         res.json({success:true,credits:user.creditBalance,user:{name:user.name}})
         
     } catch (error) {
 
         console.log(error)
+        
 
         res.json({success:false,message:"Unable to fetch user credits", error:error.message})
         
