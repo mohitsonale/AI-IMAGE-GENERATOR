@@ -2,13 +2,68 @@ import { useContext, useEffect, useState } from "react";
 import { assets } from "../assets/assets";
 import { Usercontext } from "../context/Appcontext";
 import{motion} from "framer-motion"
+import axios from "axios";
+import { toast } from "react-toastify";
 
 
 function Login(){
 
     const[state,Setstate]=useState("Sign up")
+    const {Setshowlogin,backendurl,Settoken,Setuser}=useContext(Usercontext)
+    const[name,Setname]=useState("")
+    const[email,Setemail]=useState("")
+    const[password,Setpassword]=useState("")
 
-    const {Setshowlogin}=useContext(Usercontext)
+    const onsubmithandler=async(e)=>{
+        e.preventDefault();
+
+        try {
+
+            if(state==="Sign up"){
+
+               const{data} = await axios.post(`${backendurl}/api/user/register`,{
+                    name,
+                    email,
+                    password
+                })
+
+                if(data.success){
+
+                    Settoken(data.token)
+                    Setuser(data.user)
+                    localStorage.setItem("token",data.token)
+                    Setshowlogin(false)
+                    toast.success("Account created successfully")
+
+                }
+                else{
+
+                    toast.error(data.message)
+                }
+            
+            }
+            else{
+                const{data}=await axios.post(`${backendurl}/api/user/login`,{
+                    email,
+                    password
+                })
+                if(data.success){
+                    Settoken(data.token)
+                    Setuser(data.user)
+                    localStorage.setItem("token",data.token)
+                    Setshowlogin(false)
+                    toast.success("Login successful")
+                }
+                else{
+                    toast.error(data.message)  
+                }
+            }
+            
+        } catch (error) {
+            toast.error(error.message)
+        }
+    }
+
 
     useEffect(()=>{
         document.body.style.overflow="hidden";
@@ -22,7 +77,7 @@ function Login(){
     return(
         <div className="fixed left-0 right-0 bottom-0 top-0 z-10 backdrop-blur-sm bg-black/30 flex justify-center items-center">
 
-            <motion.form className="relative bg-white p-10 rounded-xl text-black"
+            <motion.form onSubmit={onsubmithandler} className="relative bg-white p-10 rounded-xl text-black"
 
             initial={{ opacity: 0.2, y: 70 }}
             transition={{ duration: 0.8 }}
@@ -45,18 +100,18 @@ function Login(){
                 {
                     state=="Sign up" && (  <div className="flex items-center border border-gray-400 gap-2 rounded-xl mt-5 px-6 py-1">
                     <img src={assets.profile_icon} className="w-5" alt="" />
-                    <input type="text" placeholder="Enter your name" required className="outline-none text-sm" />
+                    <input onChange={(e)=>Setname(e.target.value)} value={name} type="text" placeholder="Enter your name" required className="outline-none text-sm" />
                 </div>)
                 }
 
               
                 <div className="flex items-center gap-2 border  border-gray-400 rounded-xl mt-5 px-6 py-1">
                     <img src={assets.email_icon} alt="" />
-                    <input type="email" placeholder="Enter your email" required className="outline-none text-sm" />
+                    <input onChange={(e)=>Setemail(e.target.value)} value={email} type="email" placeholder="Enter your email" required className="outline-none text-sm" />
                 </div>
                 <div className="flex items-center border border-gray-400 gap-2 rounded-xl mt-5 px-6 py-1">
                     <img src={assets.lock_icon} alt="" />
-                    <input type="password" placeholder="Enter your password" required className="outline-none text-sm" />
+                    <input onChange={(e)=>Setpassword(e.target.value)} value={password} type="password" placeholder="Enter your password" required className="outline-none text-sm" />
                 </div>
 
                 <p className="text-sm text-blue-700 cursor-pointer my-2">Forgot password?</p>
