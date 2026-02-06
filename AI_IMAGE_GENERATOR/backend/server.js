@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 8080;
 const app=express();
 app.use(cors({
    
-   origin: "http://localhost:5173",
+   origin: "https://ai-image-generate-frontend.onrender.com",
   credentials: true,
   allowedHeaders: ["Content-Type", "token"]
 }));
