@@ -24,7 +24,9 @@ function Results(){
             if(img){
                 SetisLoadded(true) 
                 Setimage(img)
+
             }
+            Setimage(" ")
         }
 
         Setloading(false)
