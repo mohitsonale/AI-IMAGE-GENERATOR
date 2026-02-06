@@ -26,7 +26,7 @@ function Results(){
                 Setimage(img)
 
             }
-            Setimage(" ")
+            Setinput(" ")
         }
 
         Setloading(false)
