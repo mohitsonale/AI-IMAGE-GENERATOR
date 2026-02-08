@@ -12,7 +12,7 @@ function Navbar(){
 
         <div className="flex items-center justify-between py-4">
             <Link to="/">
-              <img src={assets.logo} alt="" className="w-28 sm:w-32 lg:w-40" />
+              <img src={assets.logo} alt="" className="w-15 sm:w-18 lg:w-20 rounded-full" />
               
             </Link>
 

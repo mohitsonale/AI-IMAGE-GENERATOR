@@ -5,7 +5,7 @@ function Footer(){
     return(
         <div className="flex items-center justify-between gap-4 py-3 mt-20">
 
-            <img src={assets.logo} alt="" width={150} />
+            <img src={assets.logo} alt="" className="w-15 sm:w-18 lg:w-20 rounded-full" />
             <p className="flex-1 pl-4 text-sm border-l  border-gray-400 text-gray-500 max-sm:hidden ">Copyright @MohitSonale.dev | All right reserved.</p>
 
             <div className="flex gap-2.5">
