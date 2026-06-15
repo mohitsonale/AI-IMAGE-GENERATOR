@@ -1,4 +1,4 @@
-# 🎨 AI Image Generator
+# AI Image Generator
 
 AI Image Generator is a full-stack web application that enables users to generate high-quality AI images from text prompts. Built using the MERN stack, the application integrates third-party AI APIs to convert user ideas into visually appealing images in real time.
 
@@ -6,11 +6,11 @@ The project focuses on secure authentication, seamless API integration, responsi
 
 ---
 
-## 🚀 Live Demo
+##  Live Demo
 
 🔗 Live Website: https://ai-image-generate-frontend.onrender.com
 
-🔗 GitHub Repository: [Add GitHub Link]
+🔗 GitHub Repository: https://github.com/mohitsonale/AI-IMAGE-GENERATOR.git
 
 ---
 
